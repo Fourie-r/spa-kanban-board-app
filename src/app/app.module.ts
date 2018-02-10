@@ -9,6 +9,10 @@ import {NavigationBarComponent} from './components/navigation-bar/navigation-bar
 import {HomeComponent} from './components/home/home.component';
 import {appRoutes} from './routes';
 import {RouterModule} from '@angular/router';
+import {MessagingService} from './_event-bus/messaging.service';
+import {UserProjectListComponent} from './components/user-project-list/user-project-list.component';
+import {AuthorizedGuard} from './_guards/authorized.guard';
+import {UserProjectListResolver} from './_resolvers/user-project-list.resolver';
 
 @NgModule({
   declarations: [
@@ -16,14 +20,19 @@ import {RouterModule} from '@angular/router';
     LoginComponent,
     RegisterComponent,
     NavigationBarComponent,
-    HomeComponent
+    HomeComponent,
+    UserProjectListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    MessagingService,
+    UserProjectListResolver,
+    AuthorizedGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

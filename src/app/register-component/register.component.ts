@@ -1,28 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { RegisterModel } from './register.model';
+import {Component, OnInit} from '@angular/core';
+import {IUserModel} from '../_models/IUserModel';
 
 @Component({
-    selector: 'app-register-component',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+  selector: 'app-register-component',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
 
-export class RegisterComponent   {
+export class RegisterComponent {
 
-registerModel: RegisterModel = {
+  registerModel: IUserModel = {
     id: 1,
     name: 'ivan',
     password: 'sss',
     rpassword: 'sss',
     email: 'a@a',
     remail: 'a@a'
-};
+  };
 
 
-registerUser() {
+  registerUser() {
 
     console.log(this.registerModel);
-}
+  }
 
 
 }

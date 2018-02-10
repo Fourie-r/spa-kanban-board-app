@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {MessagingService} from '../../_event-bus/messaging.service';
+import {UserLoginMessage} from '../../_event-bus/messages/UserLoginMessage';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   user: any = {};
 
-  constructor() {
+  constructor(private _messagingService: MessagingService, private _routeService: Router) {
   }
 
   ngOnInit() {
@@ -17,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     // TODO: Make an API call to log the user
-    console.log(this.user);
+    this._messagingService.publish(new UserLoginMessage(this.user));
+    this._routeService.navigate(['/project-list']);
   }
 
 }
