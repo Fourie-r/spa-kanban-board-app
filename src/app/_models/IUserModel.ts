@@ -2,7 +2,7 @@ export interface IUserModel {
     id: number;
     name: string;
     email: string;
-    remail: string;
+    repeatEmail: string;
     password: string;
-    rpassword: string;
+    repeatPassword: string;
 }

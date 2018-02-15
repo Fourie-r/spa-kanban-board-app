@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './register-component/register.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NavigationBarComponent} from './components/navigation-bar/navigation-bar.component';
 import {HomeComponent} from './components/home/home.component';
 import {appRoutes} from './routes';
@@ -26,6 +26,7 @@ import {UserProjectListResolver} from './_resolvers/user-project-list.resolver';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

@@ -1,40 +1,46 @@
 <div class="container-fluid">
     <section class="container">
+		<form [formGroup]='rForm' (ngSubmit) = 'addUser(rForm.value)' >
+
 		<div class="container-page">				
 			<div class="col-md-6">
 				<h3 class="dark-grey">Registration</h3>
 				
 				<div class="form-group col-lg-12">
 					<label>Username</label>
-					<input type="text" name="firstName" class="form-control" id="firstName" value="" [(ngModel)] = "registerModel.name">
+					<input type="text" name="firstName" class="form-control" id="firstName" formControlName='name' value="" >
+					<div class = 'alert' *ngIf = '!rForm.controls["name"].valid && rForm.controls["name"].touched' > {{titleAlert}}</div>
 				</div>
 				
 				<div class="form-group col-lg-6">
 					<label>Password</label>
-					<input type="password" name="password" class="form-control" id="password" value="" [(ngModel)] = "registerModel.possword" >
+					<input type="password" name="password" class="form-control" id="password" formControlName='password' value=""  >
+					<div class = 'alert' *ngIf = '!rForm.controls["password"].valid && rForm.controls["password"].touched' > {{passwordAlert}}</div>
+
 				</div>
 				
 				<div class="form-group col-lg-6">
 					<label>Repeat Password</label>
-					<input type="password" name="rpassword" class="form-control" id="rpassword" value="" [(ngModel)] = "registerModel.rpassword" >
+					<input type="password" name="repeatPassword" class="form-control" id="repeatPassword" formControlName='repeatPassword' value=""  >
 				</div>
 								
 				<div class="form-group col-lg-6">
 					<label>Email Address</label>
-					<input type="text" name="email" class="form-control" id="email" value="" [(ngModel)] = "registerModel.email">
+					<input type="text" name="email" class="form-control" id="email" formControlName='email' value="" >
 				</div>
 				
 				<div class="form-group col-lg-6">
 					<label>Repeat Email Address</label>
-					<input type="text" name="remail" class="form-control" id="remail" value="" [(ngModel)] = "registerModel.remail">
+					<input type="text" name="repeatEmail" class="form-control" id="repeatEmail" formControlName='repeatEmail' value="" >
 				</div>			
 			
 	
 		
 	
 				
-				<button type="submit" class="btn btn-primary" (click)="registerUser()">Register</button>
+				<input type = 'submit' class = 'button expanded' value = 'Submit Form' [disabled] = '!rForm.valid'>
 			</div>
 		</div>
+		</form>
 	</section>
 </div>
