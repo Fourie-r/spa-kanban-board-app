@@ -1,25 +1,24 @@
 <div class="container-fluid">
-    <section class="container">
-		<form [formGroup]='rForm' (ngSubmit) = 'addUser(rForm.value)' >
+		<form [formGroup]='rForm' (ngSubmit) = 'addUser(rForm)' >
 
 		<div class="container-page">				
 			<div class="col-md-6">
 				<h3 class="dark-grey">Registration</h3>
 				
-				<div class="form-group col-lg-12">
+				<div class="form-group col-lg-6">
 					<label>Username</label>
 					<input type="text" name="firstName" class="form-control" id="firstName" formControlName='name' value="" >
-					<div class = 'alert' *ngIf = '!rForm.controls["name"].valid && rForm.controls["name"].touched' > {{titleAlert}}</div>
+					<label class="alert alert-danger" *ngIf = '!rForm.controls["name"].valid && rForm.controls["name"].touched' > {{titleAlert}}</label>
 				</div>
 				
-				<div class="form-group col-lg-6">
+				<div class="form-group col-lg-4">
 					<label>Password</label>
 					<input type="password" name="password" class="form-control" id="password" formControlName='password' value=""  >
-					<div class = 'alert' *ngIf = '!rForm.controls["password"].valid && rForm.controls["password"].touched' > {{passwordAlert}}</div>
+					<div class = "alert alert-danger" *ngIf = '!rForm.controls["password"].valid && rForm.controls["password"].touched' > {{passwordAlert}}</div>
 
 				</div>
 				
-				<div class="form-group col-lg-6">
+				<div class="form-group col-lg-4">
 					<label>Repeat Password</label>
 					<input type="password" name="repeatPassword" class="form-control" id="repeatPassword" formControlName='repeatPassword' value=""  >
 				</div>
@@ -38,9 +37,8 @@
 		
 	
 				
-				<input type = 'submit' class = 'button expanded' value = 'Submit Form' [disabled] = '!rForm.valid'>
+				<input type ="submit" class="btn btn-primary" value="Submit Form" [disabled]="!rForm.valid">
 			</div>
 		</div>
 		</form>
-	</section>
 </div>

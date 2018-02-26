@@ -16,7 +16,8 @@ export class UserProjectListResolver implements Resolve<IProjectModel[]> {
     return new Array<IProjectModel>({
       id: 1,
       name: 'One',
-      description: 'This is a test!'
+      description: 'This is a test!',
+      userId: 1
     });
   }
 }

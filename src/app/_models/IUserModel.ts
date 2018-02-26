@@ -1,8 +1,9 @@
 export interface IUserModel {
-    id: number;
+    $id: string;
     name: string;
     email: string;
     repeatEmail: string;
     password: string;
     repeatPassword: string;
+    $projectId: number;
 }

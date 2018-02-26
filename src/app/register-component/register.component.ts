@@ -1,6 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {IUserModel} from '../_models/IUserModel';
-import { FormBuilder, FormGroup, Validators, NgModel } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { IUserModel } from '../_models/IUserModel';
+import { FormBuilder, FormGroup, Validators, NgModel, NgForm } from '@angular/forms';
+import { AngularFireAuth  } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register-component',
@@ -15,9 +21,10 @@ export class RegisterComponent implements OnInit {
   rForm: FormGroup;
   titleAlert = 'This field is required';
   passwordAlert = 'A password consisting of 6-10 characters is required';
+  user: Observable<firebase.User>;
 
-
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private _routeService: Router, public _authService: AngularFireAuth,
+              private _userService: UserService) {
 
     this.rForm = fb.group({
       'name': [null, Validators.required],
@@ -28,16 +35,9 @@ export class RegisterComponent implements OnInit {
       'validate': ''
 
     });
+
   }
 
-  registerModel: IUserModel = {
-    id: 1,
-    name: '',
-    password: '',
-    repeatPassword: '',
-    email: '',
-    repeatEmail: ''
-  };
 
 
   ngOnInit() {
@@ -54,14 +54,23 @@ export class RegisterComponent implements OnInit {
     );
 
   }
-  addUser( input ) {
+  addUser( form?: NgForm ) {
 
-    this.registerModel.name = input.name;
-    this.registerModel.password = input.password;
-    this.registerModel.repeatPassword = input.password;
-    this.registerModel.email = input.email;
-    this.registerModel.repeatEmail = input.repeatEmail;
-    console.log(this.registerModel);
+    this._userService.insertUsers(form.value);
+    this._authService.auth.createUserWithEmailAndPassword(
+      form.value.email,
+      form.value.password
+    ).then(
+      (success) => {
+        console.log(success);
+        this._routeService.navigate(['/login'])
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+    );
+
+    form.reset();
   }
 
 

@@ -1,10 +1,10 @@
 <div class="text-center">
-  <form class="form-signin" #loginForm="ngForm" (ngSubmit)="loginUser()">
+  <form class="form-signin" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
     <label for="inputUserName" class="sr-only">User name</label>
-    <input type="text" id="inputUserName" class="form-control" placeholder="User name" required="" autofocus=""
-           name="userName"
-           [(ngModel)]="user.userName">
+    <input type="text" id="inputUserName" class="form-control" placeholder="emial" required="" autofocus=""
+           name="email"
+           [(ngModel)]="user.email">
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password"
            [(ngModel)]="user.password">

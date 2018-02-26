@@ -4,7 +4,7 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './register-component/register.component';
 import {UserProjectListComponent} from './components/user-project-list/user-project-list.component';
 import {UserProjectListResolver} from './_resolvers/user-project-list.resolver';
-import {AuthorizedGuard} from './_guards/authorized.guard';
+import {AuthorizedGuard, AuthGuard } from './_guards/authorized.guard';
 
 export const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthorizedGuard],
+    canActivate: [AuthGuard],
     children: [
       {path: 'project-list', component: UserProjectListComponent, resolve: {projects: UserProjectListResolver}},
     ]
