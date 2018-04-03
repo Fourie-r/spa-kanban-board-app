@@ -1,0 +1,26 @@
+
+<div class="container">
+<form class="form-goup" #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="container"> 
+    <div class="card" style="width: 15rem; height: 10em;">
+      <div class="card-block">
+        <div class="card-text">
+        <input class="form control" name="description" #name="ngModel" [(ngModel)] = "description" > 
+        </div>
+        <button type="submit" class="btn btn-primary">Go somewhere</button>
+
+      </div>
+    </div>
+    
+  </div>
+</form>
+</div>
+
+
+<div class="project-list">
+  <ul>
+    <li *ngFor="let item of projectsList | async">
+       {{ item.author }}
+    </li>
+  </ul>
+</div>

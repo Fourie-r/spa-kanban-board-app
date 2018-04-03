@@ -1,0 +1,11 @@
+
+<app-project-component></app-project-component>
+
+<button (click)= "logout()" class ="btn btn-active" >Log out </button>
+
+
+<ul class="list-group hover"> 
+  <li class= "list-group-item" *ngFor = 'let user of displayList'> 
+    {{user?.name}} - {{user?.password}}
+  </li>
+</ul>

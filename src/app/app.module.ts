@@ -8,10 +8,11 @@ import {RegisterComponent} from './register-component/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NavigationBarComponent} from './components/navigation-bar/navigation-bar.component';
 import {HomeComponent} from './components/home/home.component';
+import { ProjectComponent } from './components/project/project.component';
 import {appRoutes} from './routes';
 import {RouterModule} from '@angular/router';
 import {MessagingService} from './_event-bus/messaging.service';
-import {UserProjectListComponent} from './components/user-project-list/user-project-list.component';
+import {UserProjectListComponent} from './components/project-list.component/user-project-list.component';
 import {AuthorizedGuard, AuthGuard} from './_guards/authorized.guard';
 import {UserProjectListResolver} from './_resolvers/user-project-list.resolver';
 import { reducers } from '../reducers';
@@ -21,6 +22,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from '../environments/environment';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { UserService } from './services/user.service';
+import { ProjectService } from './services/project.service';
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { UserService } from './services/user.service';
     RegisterComponent,
     NavigationBarComponent,
     HomeComponent,
-    UserProjectListComponent
+    UserProjectListComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { UserService } from './services/user.service';
     UserProjectListResolver,
     AuthorizedGuard,
     AuthGuard,
-    UserService
+    UserService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })

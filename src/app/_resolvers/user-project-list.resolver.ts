@@ -14,10 +14,10 @@ export class UserProjectListResolver implements Resolve<IProjectModel[]> {
     Promise<IProjectModel[]> | IProjectModel[] {
     // TODO: Make an API call to get the projects for the user!
     return new Array<IProjectModel>({
-      id: 1,
+      $id: '',
       name: 'One',
       description: 'This is a test!',
-      userId: 1
+      userId: ''
     });
   }
 }

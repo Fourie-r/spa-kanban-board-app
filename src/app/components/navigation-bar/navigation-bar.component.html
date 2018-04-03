@@ -20,11 +20,15 @@
     <form class="form-inline my-2 my-md-0" *ngIf="isUserLoggedIn()">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" >
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()" [routerLink]="['/login']" >Log out</button>
+
     </form>
 
     <form class="form-inline mt-2 mt-md-0" *ngIf="!isUserLoggedIn()">
       <a class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/login']">Login</a>
       <a class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/register']">Register</a>
+
+   
     </form>
   </div>
 </nav>

@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './register-component/register.component';
-import {UserProjectListComponent} from './components/user-project-list/user-project-list.component';
+import {UserProjectListComponent} from './components/project-list.component/user-project-list.component';
 import {UserProjectListResolver} from './_resolvers/user-project-list.resolver';
 import {AuthorizedGuard, AuthGuard } from './_guards/authorized.guard';
 
